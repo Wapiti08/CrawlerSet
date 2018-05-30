@@ -1,0 +1,3 @@
+1.先运行ipset.py爬取代理服务器，生成一个ip.csv文件
+2.再运行get_proxy.py，读取ip.csv.
+3.最后运行番剧详情.py进行数据的爬取
