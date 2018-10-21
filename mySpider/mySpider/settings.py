@@ -65,10 +65,9 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#     'mySpider.pipelines.MyspiderPipeline': 100,
-#     'mySpider.pipelines.SomePipeline':300,
-# }
+ITEM_PIPELINES = {
+    'mySpider.pipelines.ItcastPipeline':300,
+}
 
 
 
