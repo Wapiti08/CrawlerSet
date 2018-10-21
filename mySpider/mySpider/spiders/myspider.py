@@ -17,7 +17,8 @@ class ItcastSpider(scrapy.Spider):
         #via xpath
         teacher_list=response.xpath('//div[@class="li_txt"]')
         #use a set to store the items
-        Teachers=[]
+        # Teachers=[]
+        
         for each in teacher_list:               
             #example a class
             item=ItcaseItem()
@@ -34,8 +35,13 @@ class ItcastSpider(scrapy.Spider):
             item['info']=info[0]
             
             #store the items into a set
-            Teachers.append(item)
-        return Teachers
+            # Teachers.append(item)
+
+            #seize the data to pipelines
+            yield item
+
+        # return the data,no through the pipelines
+        # return Teachers
 
 
-        
+       
