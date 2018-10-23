@@ -7,16 +7,14 @@
 
 import json
 
-class ItcastPipeline(object):
-    # optional,as a method of initializing a class
+class TencentPipeline(object):
     def __init__(self):
-        #create a folder
-        self.filename=open("teacher.json",'wb')
-    # must have, in order to process the item
+        self.filename=open("tencent.json",'wb')
+
     def process_item(self, item, spider):
-        jsontext=json.dumps(dict(item),ensure_ascii=False)+'\n'
-        self.filename.write(jsontext.encode("utf-8"))
+        text=json.dumps(dict(item),ensure_ascii=False)+'\n'
+        self.filename.write(text.encode("utf-8"))
         return item
-    # optional, end method
+
     def close_spider(self,spider):
         self.filename.close()
