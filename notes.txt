@@ -1,0 +1,107 @@
+Framework：
+	Begins with Spiders:
+              data--->Item Pipeline or 
+			  requests--->Scrapy Engine
+
+1.Begin the Program
+	scrapy startproject name(mySpider)
+2.items.py
+	the data needed to be stored
+3.enter xxx/spiders----create a spider
+	scrapy gensipder name scope(xxx.com)
+4.run the spider
+	scrapy crawl xxx(name)
+	execute:scrapy crawl name (| -o xxx.csv/json)
+
+check the structure:
+tree
+
+Normally, we only need to modify the Item Pipeline and spiders.
+
+scrapy.cfg: the basic settings--->functions
+									Concurrent setting
+									pipelines ducuments
+									distributed 
+									cleaning data
+items.py: the model of items--->scrapy.Field() stores the string
+											---->use it like dict
+											
+pipelines.py
+	the function process_item is stable
+	
+settings.py:
+	1.concurrent requests:16 default
+	2.Download_delay
+	3.cookies_enabled: whether will be traced
+	4.default_request_headers: if it is set, then there is no need to be set in spider again
+	5.spider_middlewares: priority(if there is more than one)
+	*6.Item_Pipelines:priority and can set yourself pipelines
+	#7.can set the redis_host and others(in distributed system)
+
+generate the spider:
+	enter into the directory of spiders:
+	use the command:scrapy genspider name(muspider) scope(incast.cn)
+
+In the beginning, we'd better make some notes,like 
+	
+//represent any directory
+./represent current directory
+
+teacher_list=response.xpath('//div[@class="li_txt"]'):
+for each in teacher_list:
+	#name
+	each.xpath('./h3/text()')
+	#title
+	each.xpath('./h4/text()')
+	#info
+	each.xpath('./p/text()')
+
+then begins the program
+1.set the items.py:
+	load the libirary
+	define the items: inhert the scrapy.Item
+2.begin the spider:
+	1.name
+	2.allowd_domains
+	3.start_urls (can be more)
+	*4.parse
+		1.the whole page
+		response.body----special
+		2.specfic part
+			use xpath to match
+			converse the result into normal context-->
+					xxx.xpath('./p/text()').extract() 
+			store the result into items:
+				import xxx
+				item['xxx']=name[0]	|.encode('gbk')
+				...
+		3.identify the data is item or request:
+			item: yield item --- pipelines.py
+			request: yield scrapy.Request(self.url,callback=self.parse)---two parameters
+					 resend the request to scheduler into queue,
+					 out queue, send to the downloader
+
+
+
+'''                            
+Execute the scrapy in the pycharm:
+*set the start script in "edit configuration" --- add Python ---- in the script path
+---- add start.py
+'''
+
+set the pipeline:
+use function yield in myspider to yield item
+transfer the item to pipeline---set pipeline:
+
+1.ensure the item_pipeline is defined in the setting.py
+	the last parameter is a class,which will be defined in the pipelines.py
+2.In the pipelines:
+	the process_item(three positions) function is must.
+	__init__(one position) and close_spider(two positions) is optional
+	(1)__init__ --- open a json document
+	(2)process_item:
+		dict(item)---transfer the data into dict
+		json.dumps()----transfer the dict into json data, two parameters
+						dict(item),ensure_ascii=Flase(optional)
+	(3)close the filename
+		
