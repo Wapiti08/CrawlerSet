@@ -1,0 +1,34 @@
+To crawl the app information:
+
+Fiddler(8888)
+
+1.ensure the network is the same.(the same block or route,or hotpot)
+2.set the http proxy:
+	ensure the ip is the same as the PC.
+	Port should be 8888(fiddler).
+
+How to set related context about downloading images：
+1. settings:
+	(1)You'd better set the User-Agent as mobile's
+	(2)Modify the pipeline
+	(3)Add a images_path
+
+2.pipeline:
+	(1)from scrapy.utils.project import get_project_settings
+	-----get the settings of project
+	(2)GET the value from settings:
+	xxx=get_project_settings().get(xxx)
+	(3)load ImagesPipeline from package---pipelines.images
+	rewrite get_media_requests   and   item_completed
+		(1)get_media_requests:
+		get the link---item['imagelink']
+		send the request---yield scrapy.Request(xxx)---will be send to item_completed
+		(2)item_completed
+		1.get the paths----[x['path'] for ok,x in results if ok]
+			1.1if not ---- DropItem---scrapy.exceptions
+		2.rename ---- os (original name, name)
+		3.Store the imagePath and return item
+
+3.spider:
+	reponse.text----get the context of response
+	
