@@ -14,6 +14,10 @@ BOT_NAME = 'tenSpider'
 SPIDER_MODULES = ['tenSpider.spiders']
 NEWSPIDER_MODULE = 'tenSpider.spiders'
 
+#store the log information 
+LOG_FILE='tencentlog.log'
+#the store level, over or equal will be stored
+LOG_LEVEL='INFO'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tenSpider (+http://www.yourdomain.com)'
