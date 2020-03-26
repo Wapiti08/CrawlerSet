@@ -18,4 +18,10 @@ This project is similar to the "acfun spider", it provides some basic ideas to b
 
 The crawler to capture the positions from tencent company, which helps you find the most desired job to apply.
 
-So having some fun.
+
+
+
+## for usage about the scrapy framework:
+
+You can check the note.txt for some instructions and attentions.
+
