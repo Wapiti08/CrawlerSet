@@ -1,6 +1,15 @@
 # spider-project
 In this part, you will see from basic spider to crawler framework. 
-And also not only to grab meta context, but also for pictures resources.
-Not only for websites, but also for mobile data.
-You can get full ideas to grab data.
-So have fun.
+
+**Douyu**:
+Using the scrapy framework to capture pictures from mobile app.
+
+**acfun spider**:
+Basic crawler to extract core information or comments about the opera.
+It provides the function to sort the most hot operas.
+
+**spider-for-movie**:
+This project is similar to the "acfun spider", it provides some basic ideas to bypass the block of anti-crawler policy on websites.
+
+
+So having some fun.
