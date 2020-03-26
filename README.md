@@ -1,5 +1,6 @@
 # spider-project
-In this part, you will see from basic spider to crawler framework. 
+
+The collections for different platforms to apply the python crawler and scrapy to extract information.
 
 **1. Douyu**:
 
