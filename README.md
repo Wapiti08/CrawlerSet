@@ -23,7 +23,9 @@ The crawler to capture the positions from tencent company, which helps you find 
 
 The most advanced clawer to grap information for all products in one page to save as json format
 
+**6. Google_API_Query**:
 
+The script can be used to search with any keywords on google with bypassing ability.
 
 **Usage about the scrapy framework**:
 
