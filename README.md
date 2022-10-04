@@ -27,6 +27,12 @@ The most advanced clawer to grap information for all products in one page to **s
 
 The script can be used to **search with any keywords** on google with bypassing ability.
 
+**7. Go cocurrency**:
+```
+go mod tidy
+go run go_crawler.go {websites}
+```
+
 **Usage about the scrapy framework**:
 
 You can check the note.txt for some instructions and attentions.
